@@ -16,6 +16,7 @@ $("#enter").on('tap',function(){
 
 	$.post('/api/skill',{},function(response){
 		//console.log(response)
+
 		var html = "";
 		for(var i=0;i<response.length;i++){
 			html +="<li>" + response[i].category + "</li>"
@@ -41,6 +42,8 @@ var swiperAnimate = require('./components/swiper/swiper.animate1.0.2.min.js');
 
 var mySwiper = new Swiper ('.swiper-container', {
 	effect:'cube',
+	 pagination: '.swiper-pagination',
+        paginationType: 'progress',
   onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
     swiperAnimate.swiperAnimateCache(swiper); //隐藏动画元素 
     swiperAnimate.swiperAnimate(swiper); //初始化完成开始动画
@@ -50,17 +53,6 @@ var mySwiper = new Swiper ('.swiper-container', {
   } 
   })      
 
-
-// $("#footer div").tap(function(){
-// 	var data=$(this).attr('class');
-// 	$.post('/api/'+ data,{},function(response){
-// 		var html = "";
-// 		for(var i=0;i<response.length;i++){
-// 			html +="<li>" + response[i].category + "</li>"
-// 		}
-// 		$("#scroller ul").html(html);
-// 	})
-// })
 $('#footer div').on("tap",function(){
 	var data=$(this).attr('id');
 	$.post(
