@@ -21,9 +21,9 @@ $("#enter").on('tap',function(){
 		for(var i=0;i<response.length;i++){
 			html +="<li>" + response[i].category + "</li>"
 			//console.log(response)
-			console.log(html)
+			//console.log(html)
 		}
-		console.log($("#scroll ul"))
+		//console.log($("#scroll ul"))
 		$("#scroller ul").html(html);
 		//调用IScroll
 		myScroll = new IScroll('#wrapper',{mouseWheel:true});
@@ -55,6 +55,7 @@ var mySwiper = new Swiper ('.swiper-container', {
 
 $('#footer div').on("tap",function(){
 	var data=$(this).attr('id');
+	$(this).addClass('active').siblings().removeClass('active');
 	$.post(
 		"/api/"+ data,function(text,status){
 		$('#scroller ul').html("");
